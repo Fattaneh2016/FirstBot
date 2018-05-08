@@ -16,6 +16,7 @@ namespace echoBot
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
         /// </summary>
+        /// create bot
         public async Task<HttpResponseMessage> Post([FromBody]Activity activity)
         {
             if (activity.Type == ActivityTypes.Message)
