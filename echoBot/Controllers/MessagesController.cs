@@ -30,32 +30,7 @@ namespace echoBot
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }
-        public class InterviewDialog : IDialog<object>
-        {
-            private int _patience = 0;
-
-            public async Task StartAsync(IDialogContext context)
-            {
-                _patience = 0;
-              context.Wait(PatientReadAsync);
-            }
-
-            public async Task PatientReadAsync(IDialogContext context, IAwaitable<IActivity> awaitable)
-            {
-                var activity = await awaitable;
-                if (activity.Type == ActivityTypes.Message)
-                {
-                   
-                    context.Wait(PatientReadAsync);
-                }
-                else
-                {
-                    await context.PostAsync("My patience is running out: " + _patience);
-                    context.Wait(PatientReadAsync);
-                }
-            }
-
-        }
+        
             private Activity HandleSystemMessage(Activity message)
         {
             if (message.Type == ActivityTypes.DeleteUserData)
